@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 29 mars 2020 à 17:33
+-- Généré le :  ven. 17 avr. 2020 à 21:56
 -- Version du serveur :  10.3.16-MariaDB
 -- Version de PHP :  7.1.30
 
@@ -32,27 +32,21 @@ CREATE TABLE `cours` (
   `NUM_C` int(11) NOT NULL,
   `LOGIN_EN` varchar(50) NOT NULL,
   `TITRE` varchar(50) DEFAULT NULL,
-  `PIECE_JOINTE` varchar(50) DEFAULT NULL
+  `PIECE_JOINTE` varchar(50) DEFAULT NULL,
+  `nbtelech` int(11) DEFAULT 0,
+  `nbvisiteur` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `cours`
 --
 
-INSERT INTO `cours` (`NUM_C`, `LOGIN_EN`, `TITRE`, `PIECE_JOINTE`) VALUES
-(1, 'nihal17', 'Poineteurs en C++', '#'),
-(2, 'nihal17', 'Vecteurs en Java', 'TD2.pdf'),
-(3, 'nihal', 'Objects sous Python', 'TD2.pdf'),
-(4, 'nihal', 'Statistics sous R', 'TD1.pdf'),
-(5, 'nihal', 'Matlab et Programmation', 'TD2.pdf'),
-(6, 'nihal17', 'Salam O Laykium', NULL),
-(7, 'nihal17', 'By bye', NULL),
-(8, 'nihal17', 'Nice nice', 'bm-airbnb.png'),
-(9, 'nihal17', 'Test final', 'cahierdechargelectromag.docx'),
-(10, 'nihal17', 'test Final', 'cahierdechargelectromag.docx'),
-(11, 'nihal17', 'unautre', 'Business model.docx'),
-(12, 'nihal17', 'rapport vs compte rendus', 'RAPPORT.pdf'),
-(13, 'nihal17', 'rapport vs compte rendus', 'RAPPORT.pdf');
+INSERT INTO `cours` (`NUM_C`, `LOGIN_EN`, `TITRE`, `PIECE_JOINTE`, `nbtelech`, `nbvisiteur`) VALUES
+(1, 'abbadi', 'Logique,ensemble et applications', 'logique_ensembles_applications.pdf', 4, 4),
+(2, 'abbadi', 'Calcul matriciel', 'Alg.1_calcul_matriciel.pdf', 1, 0),
+(4, 'abbadi', 'Matlab', 'Matlab_TP1.pdf', 0, 0),
+(5, 'abbadi', 'Limite et continuite', 'LimitesContTS1.doc', 0, 0),
+(6, 'abbadi', 'developpement limite', 'LimitesContTS1.doc', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -76,7 +70,8 @@ CREATE TABLE `enseignant` (
 --
 
 INSERT INTO `enseignant` (`LOGIN_EN`, `MOT_DE_PASS_EN`, `EMAIL_EN`, `NOM_EN`, `PRENOM_EN`, `DATE_NAISSANCE_EN`, `LIEU_NAISSANCE_EN`, `DATE_EMBAUCHEMENT`) VALUES
-('nihal17', '1234', 'benihal@gmail.com', 'Nihal', 'Benarbiya', '0000-00-00', 'oujda', '0000-00-00');
+('abbadi', 'math', 'abzabbadi@gmail.com', 'ABBADI', 'Abdelaziz', '1970-03-25', 'oujda', '2020-04-16'),
+('serghini', '7483', 'aserghini@gmail.com', 'A', 'Serghini', '1966-03-25', 'oujda', '2020-04-16');
 
 -- --------------------------------------------------------
 
@@ -101,9 +96,13 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`LOGIN`, `MOT_DE_PASS`, `EMAIL`, `NOM`, `PRENOM`, `DATE_NAISSANCE`, `LIEU_NAISSANCE`, `SPECIALITE`, `ANNE_UNIVERSITAIRE`) VALUES
-('abced', 'efghk', 'abcderf@gmail.com', 'abcdefg', 'khfyth', '0000-00-00', 'oujda', 'DAI', 2020),
-('lala', 'lili', 'lalalili@gmail.com', 'lalala', 'lilili', '0000-00-00', 'oujda', 'DAI', 2020),
-('nini', 'ben', 'niniben@gmail.com', 'nini', 'ben', '0000-00-00', 'oujda', 'DAI', 2020);
+('Ali', 'lili', 'Ali@gmail.com', 'ABDEL', 'Ali', '2001-02-01', 'oujda', 'DAI', 2020),
+('amina', '4567', 'aminafrizi@gmail.com', 'FRIZI', 'Amina', '2000-05-09', 'oujda', 'DAI', 2020),
+('farah', '4567', 'farahammouch@gmail.com', 'AMMOUCH', 'Farah', '2000-06-20', 'oujda', 'DAI', 2020),
+('fatima', 'fati', 'fatima@gmail.com', 'BOUAB', 'fatima', '2001-02-01', 'oujda', 'FCF', 2020),
+('kaoutar', 'kaoukaou', 'mimounikaoutar@gmail.com', 'MIMOUNI', 'kaouthar', '2000-05-01', 'oujda', 'ASR', 2020),
+('nihal', '1234', 'nihalbenarbiya@gmail.com', 'BENARBIYA', 'Nihal', '2001-02-17', 'oujda', 'DAI', 2020),
+('siham', '4567', 'aliben@gmail.com', 'BENARI', 'Siham', '2000-09-12', 'Nador', 'DAI', 2020);
 
 -- --------------------------------------------------------
 
@@ -123,21 +122,10 @@ CREATE TABLE `td` (
 --
 
 INSERT INTO `td` (`NUM_TD`, `NUM_C`, `TITRE`, `PIECE`) VALUES
-(1, 1, 'Relation des cours', 'TD1.pdf'),
-(2, 1, 'Donnes des cours', 'TD1.pdf'),
-(3, 1, 'firsttd ', 'TD1.pdf'),
-(4, 2, 'secondtd ', 'TD1.pdf'),
-(5, 3, 'thirdtd ', 'TD1.pdf'),
-(6, 4, 'fourthtd ', 'TD1.pdf'),
-(7, 5, 'fifthtd ', 'TD1.pdf'),
-(8, 3, 'firsttd ', 'TD1.pdf'),
-(9, 4, 'secondtd ', 'TD1.pdf'),
-(10, 5, 'thirdtd ', 'TD1.pdf'),
-(11, 2, 'fourthtd ', 'TD1.pdf'),
-(12, 1, 'fifthtd ', 'TD1.pdf'),
-(13, 6, 'Okay c td', 'cahierdechargelectromag.docx'),
-(14, 11, 'ouiouiouioui', 'scribd.txt'),
-(15, 12, 'td du rapp', 'nagafat (2).docx');
+(1, 1, 'TD1', 'td1(1).pdf'),
+(2, 1, 'TD2', 'TD2.pdf'),
+(3, 2, 'TD1', 'TD1(3).pdf'),
+(4, 5, 'TD1', 'hyperbo.docx');
 
 -- --------------------------------------------------------
 
@@ -157,31 +145,7 @@ CREATE TABLE `tp` (
 --
 
 INSERT INTO `tp` (`NUM_TP`, `NUM_C`, `TITRE`, `PIECE`) VALUES
-(1, 1, 'prmiler', 'TD1.pdf'),
-(2, 2, 'deuxieme', 'TD1.pdf'),
-(3, 3, 'troisieme', 'TD1.pdf'),
-(4, 4, 'quatrieme', 'TD1.pdf'),
-(5, 5, 'cinquieme', 'TD1.pdf'),
-(6, 2, 'sixieme', 'TD1.pdf'),
-(7, 4, 'septieme', 'TD1.pdf'),
-(8, 2, 'prmier', 'TD1.pdf'),
-(9, 3, 'deuxieme', 'TD1.pdf'),
-(10, 1, 'troisieme', 'TD1.pdf'),
-(11, 5, 'quatrieme', 'TD1.pdf'),
-(12, 3, 'cinquieme', 'TD1.pdf'),
-(13, 1, 'sixieme', 'TD1.pdf'),
-(14, 5, 'septieme', 'TD1.pdf'),
-(15, 1, 'Relation des arbres', 'ArbreBinaireRecherche.java'),
-(16, 2, 'Relation des arbres', 'bm-airbnb.png'),
-(17, 6, 'Ok c TP', 'RAPPORTELECTROMAGMP.docx'),
-(18, 1, 'booom', 'PRESENTATIONPP.ppt'),
-(19, 1, 'loulou', 'bm-airbnb.png'),
-(20, 1, 'loulou', 'bm-airbnb.png'),
-(21, 1, 'loulou', 'bm-airbnb.png'),
-(22, 11, 'wiwiwi', 'monpfe.sql'),
-(23, 11, 'wiwiwi', 'monpfe.sql'),
-(24, 12, 'rapport', 'Document 9.pdf'),
-(25, 12, 'rapport', 'Document 9.pdf');
+(3, 4, 'TP1:MATLAB', 'matlab.pdf');
 
 --
 -- Index pour les tables déchargées
@@ -191,7 +155,8 @@ INSERT INTO `tp` (`NUM_TP`, `NUM_C`, `TITRE`, `PIECE`) VALUES
 -- Index pour la table `cours`
 --
 ALTER TABLE `cours`
-  ADD PRIMARY KEY (`NUM_C`);
+  ADD PRIMARY KEY (`NUM_C`),
+  ADD KEY `FK_cours_gestion_enseignant` (`LOGIN_EN`);
 
 --
 -- Index pour la table `enseignant`
@@ -216,7 +181,8 @@ ALTER TABLE `td`
 -- Index pour la table `tp`
 --
 ALTER TABLE `tp`
-  ADD PRIMARY KEY (`NUM_TP`);
+  ADD PRIMARY KEY (`NUM_TP`),
+  ADD KEY `FK_TP_CONTIENT_COURS` (`NUM_C`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -226,29 +192,41 @@ ALTER TABLE `tp`
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `NUM_C` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `NUM_C` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `td`
 --
 ALTER TABLE `td`
-  MODIFY `NUM_TD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `NUM_TD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `tp`
 --
 ALTER TABLE `tp`
-  MODIFY `NUM_TP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `NUM_TP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
+-- Contraintes pour la table `cours`
+--
+ALTER TABLE `cours`
+  ADD CONSTRAINT `FK_cours_gestion_enseignant` FOREIGN KEY (`LOGIN_EN`) REFERENCES `enseignant` (`LOGIN_EN`);
+
+--
 -- Contraintes pour la table `td`
 --
 ALTER TABLE `td`
-  ADD CONSTRAINT `FK_TD_CONTIENT_COURS` FOREIGN KEY (`NUM_C`) REFERENCES `cours` (`NUM_C`);
+  ADD CONSTRAINT `FK_TD_CONTIENT_COURS` FOREIGN KEY (`NUM_C`) REFERENCES `cours` (`NUM_C`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `tp`
+--
+ALTER TABLE `tp`
+  ADD CONSTRAINT `FK_TP_CONTIENT_COURS` FOREIGN KEY (`NUM_C`) REFERENCES `cours` (`NUM_C`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

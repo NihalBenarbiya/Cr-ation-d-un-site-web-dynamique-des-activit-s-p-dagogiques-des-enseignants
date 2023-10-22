@@ -1,0 +1,16 @@
+Merci d'avoir telecharger mon script tout d'abord !
+
+Sinon n'oublier pas de modifier le fichier login.php avec vos information à vous.
+
+Voici la table que vous devez crée : 
+
+CREATE TABLE `info_personne` (
+  `plnom` char(1) NOT NULL default '',
+  `nom` varchar(250) NOT NULL default '',
+  `prenom` varchar(250) NOT NULL default '',
+  `adresse` varchar(250) NOT NULL default '',
+  `tel` varchar(20) NOT NULL default '',
+  PRIMARY KEY  (`plnom`)
+)
+
+Bonne utilisation vous pouvez le reproduire le modifier sans me prevenir y a pas de probleme !
